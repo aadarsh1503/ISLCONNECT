@@ -1,0 +1,209 @@
+.about-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fef5f5 0%, #fff0f5 50%, #ffe4e8 100%);
+  color: #333;
+  position: relative;
+}
+
+.about-animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #fef5f5 0%, #fff0f5 100%);
+  z-index: -1;
+}
+
+.about-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(252, 172, 164, 0.3);
+  box-shadow: 0 4px 20px rgba(252, 172, 164, 0.2);
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fc6c85, #ff9a9e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #fc6c85;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #fc6c85, #ff9a9e);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(252, 172, 164, 0.4);
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(252, 172, 164, 0.6);
+  background: linear-gradient(135deg, #ff9a9e, #fc6c85);
+}
+
+.login-link {
+  background: linear-gradient(135deg, #fc6c85, #ff9a9e);
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(252, 172, 164, 0.4);
+}
+
+.login-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(252, 172, 164, 0.6);
+}
+
+.about-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #fc6c85, #ff9a9e, #ffa8b5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-hero p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.about-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(252, 172, 164, 0.3);
+  border-radius: 20px;
+  padding: 40px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(252, 172, 164, 0.15);
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  border-color: #fc6c85;
+  box-shadow: 0 15px 40px rgba(252, 172, 164, 0.3);
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 2px 10px rgba(252, 172, 164, 0.4));
+}
+
+.about-card h2 {
+  font-size: 1.5rem;
+  color: #fc6c85;
+  margin-bottom: 15px;
+}
+
+.about-card p {
+  color: #666;
+  line-height: 1.8;
+}
+
+.about-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-card ul li {
+  color: #666;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(252, 172, 164, 0.2);
+}
+
+.about-card ul li:last-child {
+  border-bottom: none;
+}
+
+.about-footer {
+  text-align: center;
+  padding: 30px;
+  color: #999;
+  border-top: 1px solid rgba(252, 172, 164, 0.2);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(0, 240, 255, 0.2);
+  border-top-color: #00f0ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .about-navbar {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+}
