@@ -8,6 +8,9 @@ node_modules/
 dist/
 build/
 
+# Output videos/media
+output_v/
+
 # Logs
 *.log
 npm-debug.log*
