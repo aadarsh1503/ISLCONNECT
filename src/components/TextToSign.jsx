@@ -200,6 +200,39 @@ const TextToSign = () => {
           <h3>💡 How it works</h3>
           <p>Type your message and watch as each letter is demonstrated using real ISL (Indian Sign Language) gestures from our dataset. Each character in every word is shown one by one!</p>
         </div>
+
+        <div className="steps-section">
+          <h2 className="steps-title">How to Use Text to Sign</h2>
+          <div className="steps-grid">
+            <div className="step-card">
+              <div className="step-number">1</div>
+              <div className="step-icon">✍️</div>
+              <h3>Type Your Message</h3>
+              <p>Enter any text in English in the input box. You can type words, sentences, or phrases.</p>
+            </div>
+            
+            <div className="step-card">
+              <div className="step-number">2</div>
+              <div className="step-icon">🎯</div>
+              <h3>Click Convert</h3>
+              <p>Press the "Convert to Sign Language" button to start the translation process.</p>
+            </div>
+            
+            <div className="step-card">
+              <div className="step-number">3</div>
+              <div className="step-icon">👁️</div>
+              <h3>Watch Signs</h3>
+              <p>Each letter will be displayed as an ISL gesture image. Watch carefully to learn the signs.</p>
+            </div>
+            
+            <div className="step-card">
+              <div className="step-number">4</div>
+              <div className="step-icon">🎓</div>
+              <h3>Learn & Practice</h3>
+              <p>Practice the signs shown. Each letter appears for 2.5 seconds, giving you time to observe.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
