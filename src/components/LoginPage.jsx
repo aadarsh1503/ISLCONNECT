@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 
-const BACKEND = 'http://localhost:3000';
+const BACKEND = 'http://localhost:3002';
 
 const LoginPage = () => {
     const [isSignup, setIsSignup] = useState(false);

@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'http://localhost:3002';
 
 export const login = async (email, password) => {
     const response = await fetch(`${BASE_URL}/api/users/login`, {

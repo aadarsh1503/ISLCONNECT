@@ -10,9 +10,13 @@ from yt_dlp import YoutubeDL
 import subprocess
 import random
 import glob
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Assuming the same constants and functions from your code
-ISL_DATASET_PATH = r"C:\Users\aadar\.cache\kagglehub\datasets\prathumarikeri\indian-sign-language-isl\versions\1\Indian"
+ISL_DATASET_PATH = os.getenv('ISL_DATASET_PATH', r"C:\Users\aadar\.cache\kagglehub\datasets\prathumarikeri\indian-sign-language-isl\versions\1\Indian")
 OUTPUT_FOLDER = "output_v"
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
@@ -243,19 +247,20 @@ def create_isl_video_from_text(text, output_path):
                     images = glob.glob(os.path.join(char_folder, "*.jpg"))
                     if images:
                         img_path = random.choice(images)
-                        # Create 0.5 second clip for each character
-                        img_clip = ImageClip(img_path).with_duration(0.5)
+                        # Create 2.5 second clip for each character (much slower)
+                        # Resize to consistent 800x800 size
+                        img_clip = ImageClip(img_path).set_duration(2.5).resize((800, 800))
                         
                         # Add text caption showing the letter and word
                         try:
                             txt_clip = TextClip(
                                 f"{char}\n({current_word})",
                                 font='Arial',
-                                fontsize=50,
+                                fontsize=60,
                                 color='white',
                                 bg_color='black',
-                                size=(img_clip.w, None)
-                            ).with_duration(0.5).with_position(('center', 'bottom'))
+                                size=(800, None)
+                            ).set_duration(2.5).set_position(('center', 'bottom'))
                             
                             # Composite image with text
                             video_clip = CompositeVideoClip([img_clip, txt_clip])
@@ -271,7 +276,7 @@ def create_isl_video_from_text(text, output_path):
             final_video = concatenate_videoclips(clips, method="compose")
             final_video.write_videofile(
                 output_path,
-                fps=24,
+                fps=20,
                 codec='libx264',
                 audio=False
             )

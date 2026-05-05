@@ -11,8 +11,41 @@ const TextToSign = () => {
   const [currentLetter, setCurrentLetter] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState('');
+  const [navbarVisible, setNavbarVisible] = useState(true);
+  const [navbarScrolled, setNavbarScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const avatarRef = useRef(null);
   const navigate = useNavigate();
+
+  // Navbar scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Add blur effect when scrolled
+      if (currentScrollY > 50) {
+        setNavbarScrolled(true);
+      } else {
+        setNavbarScrolled(false);
+      }
+      
+      // Hide/show navbar
+      if (currentScrollY < 10) {
+        setNavbarVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setNavbarVisible(false);
+      } else {
+        // Scrolling up
+        setNavbarVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -39,11 +72,11 @@ const TextToSign = () => {
         // Show each character in the word
         for (let j = 0; j < word.length; j++) {
           setCurrentLetter(word[j]);
-          await new Promise(resolve => setTimeout(resolve, 800)); // 0.8 seconds per letter
+          await new Promise(resolve => setTimeout(resolve, 2500)); // 2.5 seconds per letter (much slower)
         }
         
         // Pause between words
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 800)); // 1 second pause between words
       }
     }
 
@@ -56,7 +89,7 @@ const TextToSign = () => {
     <div className="text-to-sign-page">
       <div className="text-sign-animated-bg"></div>
 
-      <nav className="text-sign-navbar">
+      <nav className={`text-sign-navbar ${navbarVisible ? 'navbar-visible' : 'navbar-hidden'} ${navbarScrolled ? 'navbar-scrolled' : ''}`}>
         <div className="nav-brand">ISL Connect</div>
         <div className="nav-links">
           <a href="/text-to-sign" className="active">Text to Sign</a>

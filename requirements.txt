@@ -4,3 +4,10 @@ yt-dlp
 opencv-python
 SpeechRecognition
 pyaudio
+openai-whisper
+moviepy
+ffmpeg-python
+kagglehub
+python-dotenv
+Pillow
+requests
