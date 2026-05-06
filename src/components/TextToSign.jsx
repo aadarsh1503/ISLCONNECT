@@ -65,7 +65,7 @@ const TextToSign = () => {
     const words = inputText.trim().toUpperCase().split(/\s+/);
     
     for (let i = 0; i < words.length; i++) {
-      const word = words[i].replace(/[^A-Z]/g, ''); // Remove non-letters
+      const word = words[i].replace(/[^A-Z0-9]/g, ''); // Allow letters and numbers
       if (word) {
         setCurrentWord(word);
         
@@ -76,7 +76,7 @@ const TextToSign = () => {
         }
         
         // Pause between words
-        await new Promise(resolve => setTimeout(resolve, 800)); // 1 second pause between words
+        await new Promise(resolve => setTimeout(resolve, 1000)); // 1 second pause between words
       }
     }
 
